@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './reset.css';
 import './App.css';
-import Family from './Components/Pages/Family';
 import Login from './Components/Pages/Login';
-import NotFamily from './Components/Pages/NotFamily';
+import FamilyMember from './Components/Pages/Members/FamilyMember';
+import Family from './Components/Pages/Family';
 import Posts from './Components/Pages/Posts';
+import NotFamily from './Components/Pages/NotFamily';
 import Footer from './Components/Footer/Footer';
-import logo from './assets/family-ties-logo.png';
 
 class App extends Component {
   render() {
@@ -15,6 +15,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route path="/" component={Login} exact />
+          <Route path="/create-family" component={FamilyMember} />
           <Route path="/Family" component={Family} />
           <Route path="/Posts" component={Posts} />
           <Route path="/NotFamily" component={NotFamily} />

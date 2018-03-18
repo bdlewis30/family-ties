@@ -1,8 +1,43 @@
-.footer {
+footer {
     width: 100%;
-    background: #00A1FC;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: cornflowerblue;
     position: fixed;
     bottom: 0px;
-    height: 54px;
     box-shadow: -1px -1px 1px grey;
+    font-size: 20px;
+    color: white;
+}
+
+a {
+    font-size: 20px;
+    color: white;
+}
+
+.left {
+    height: 100%;
+    padding: 20px 30px 20px 50px;
+}
+
+.glyphicon-home {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: cornflowerblue;
+}
+
+.center {
+    padding: 20px 20px;
+    border-left: 1px solid lightgray;
+    background: cornflowerblue;
+}
+
+.right {
+    border-left: 1px solid lightgray;
+    padding: 20px 50px 20px 30px;
+    background: cornflowerblue;
 }

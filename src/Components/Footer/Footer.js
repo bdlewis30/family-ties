@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LOGINOUT } from '../../Reducer/redux';
 import './Footer.css';
 
-export class Footer extends Component{
+export class Footer extends Component {
 
     componentWillUnmount() {
         this.props.LOGINOUT(false)
     }
 
-    render(){
-        let logo = <img src="../assets/family-ties-logo.png" height="200px" width="200px" alt="logo" />
-        return(
+    render() {
+        return (
             <div>
-                {logo}
-                <div>Logo made with <a href="https://www.designevo.com/" title="Free Online Logo Maker">DesignEvo</a></div>
+                <footer>
+                    <Link to="/Family" className="glyphicon glyphicon-home left"><button></button></Link>
+                    <div className="center">FamilyTies</div>
+                    <a href="/" className="right"><button>Logout</button></a>
+                </footer>
             </div>
         )
     }

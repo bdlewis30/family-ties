@@ -14,9 +14,9 @@ export class Footer extends Component {
         return (
             <div>
                 <footer>
-                    <Link to="/Family" className="glyphicon glyphicon-home left"><button></button></Link>
+                    <Link to="/Family" className="glyphicon glyphicon-home left"></Link>
                     <div className="center">FamilyTies</div>
-                    <a href="/" className="right"><button>Logout</button></a>
+                    <a href="/" className="right">Logout</a>
                 </footer>
             </div>
         )

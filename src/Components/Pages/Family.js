@@ -3,6 +3,7 @@ import '../../App.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LOGINOUT } from '../../Reducer/redux';
+// import FamilyMembers from './Members/FamilyMember';
 
 export class Family extends Component {
 
@@ -13,6 +14,7 @@ export class Family extends Component {
     render() {
         return (
             <div className="family-container">
+            {/* <FamilyMember /> -- This will replace the placeholder info below*/}
                 <Link to="" className="family">
                     <section className="family">
                         <div>

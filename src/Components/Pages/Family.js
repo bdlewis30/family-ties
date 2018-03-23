@@ -7,9 +7,6 @@ import { LOGINOUT } from '../../Reducer/redux';
 
 export class Family extends Component {
 
-    componentWillUnmount() {
-        this.props.LOGINOUT(false)
-    }
 
     render() {
         return (

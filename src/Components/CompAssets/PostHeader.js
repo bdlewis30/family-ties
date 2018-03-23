@@ -7,9 +7,6 @@ import { LOGINOUT } from '../../Reducer/redux';
 
 export class Header extends Component {
 
-    componentWillUnmount() {
-        this.props.LOGINOUT(false)
-    }
 
     constructor(){
         super()

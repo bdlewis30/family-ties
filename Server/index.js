@@ -11,7 +11,8 @@ const {
     AUTH_CLIENT_ID,
     AUTH_CLIENT_SECRET,
     AUTH_CALLBACK_URL,
-    CONNECTION_STRING
+    CONNECTION_STRING,
+    SERVER_PORT
 } = process.env
 
 const app = express();
@@ -23,7 +24,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }))
-app.use(passport.initialize())
+app.use(passport.initialize());
 app.use(passport.session());
 
 massive(CONNECTION_STRING).then((db) => {
@@ -36,7 +37,7 @@ passport.use(new Auth0Strategy({
     clientSecret: AUTH_CLIENT_SECRET,
     callbackURL: AUTH_CALLBACK_URL,
     scope: 'openid profile'
-}, function (accessToken, refreshToken, extraParams, profile, done){
+}, function (accessToken, refreshToken, extraParams, profile, done) {
     console.log(profile);
     let { name, email, picture, user_id } = profile;
     const db = app.get('db');
@@ -63,23 +64,34 @@ passport.serializeUser((id, done) => {
 
 passport.deserializeUser((id, done) => {
     app.get('db').find_session_user([id])
-    .then(function(user){
-        return done(null, user[0])
-    })
+        .then(function (user) {
+            return done(null, user[0])
+        })
 })
 
-app.get('auth/logout', function(req, res){
+app.get('/auth', passport.authenticate('auth0'))
+app.get('/auth/callback', passport.authenticate('auth0', {
+    successRedirect: process.env.SUCCESSREDIRECT,
+    failureRedirect: process.env.FAILUREREDIRECT
+}))
+
+app.get('/auth/me', (req, res) => {
+    if (!req.user) {
+        res.status(404).send('User not found.');
+    }
+    else {
+        res.status(200).send(req.user);
+    }
+})
+
+app.get('auth/logout', function (req, res) {
     req.logOut();
     res.redirect('/')
 })
 
+let router = require('./Routes/apis')
+app.use('/api', router)
 
-const { SERVER_PORT} = process.env
-
-massive(process.env.CONNECTION_STRING).then(dbInstance => {
-    app.set('db', dbInstance);
-
-    app.listen(SERVER_PORT, () => {
-        console.log(`Listening on port: ${SERVER_PORT}`)
-    })
-})
+app.listen(SERVER_PORT, () => {
+    console.log(`Listening on port: ${SERVER_PORT}`)
+});

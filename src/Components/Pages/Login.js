@@ -8,6 +8,10 @@ import { LOGINOUT } from '../../Reducer/redux';
 
 export class Login extends Component {
 
+    componentWillMount(){
+        
+    }
+
     componentWillUnmount() {
         this.props.LOGINOUT(false)
     }

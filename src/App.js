@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import './reset.css';
 import './App.css';
 import Login from './Components/Pages/Login';
+import CreateFamily from './Components/Admin/CreateFamily';
 import FamilyMember from './Components/Pages/Members/FamilyMember';
 import Family from './Components/Pages/Family';
 import Posts from './Components/Pages/Posts';
@@ -15,6 +16,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route path="/" component={Login} exact />
+          <Route path="/Admin" component={CreateFamily} />
           <Route path="/create-family" component={FamilyMember} />
           <Route path="/Family" component={Family} />
           <Route path="/Posts" component={Posts} />

@@ -1,12 +1,34 @@
 import axios from "axios";
 
 const initialState = {
-    users: {}
+    users: {},
+    admin: {
+        mainFamImg: '',
+        familyName: '',
+        parents: [],
+        famMembers: [],
+        access: []
+    },
+    familyMembers: {
+        familyImg: '',
+        familyName: '',
+        posts: {
+            postUserImg: '',
+            postUserName: '',
+            post: '',
+            dateTime: '',
+            image: '',
+            video: '',
+            likes: '',
+            comments: ''
+        }
+    }
 }
 
 
-const LOG_IN_OUT = "LOG_IN_OUT"
+const LOG_IN_OUT = "LOG_IN_OUT";
 const GET_USER = 'GET_USER';
+
 
 
 export function GETUSER() {

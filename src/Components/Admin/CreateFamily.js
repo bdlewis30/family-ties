@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {GETUSER} from '../../Reducer/redux';
 import AdminImg from './AdminImg'
+import './Admin.css';
+import AdminFamName from './AdminFamName';
+import AdminFamMembers from './AdminFamMembers';
 
 class CreateFamily extends Component{
 
@@ -15,8 +18,11 @@ class CreateFamily extends Component{
 
     render(){
         return(
-            <div>
+            <div className="create-family-container">
+                <h1>Create Family Group</h1>
+                <AdminFamName />
                 <AdminImg />
+                <AdminFamMembers />
             </div>
         )
     }

@@ -3,9 +3,8 @@ import './CompAssets.css';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { LOGINOUT } from '../../Reducer/redux';
 
-export class Header extends Component {
+export class PostHeader extends Component {
 
 
     constructor(){
@@ -19,7 +18,7 @@ export class Header extends Component {
     render(){
         return(
             <div>
-                <header></header>
+                
                 
             </div>
         )
@@ -32,4 +31,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { LOGINOUT })(Header)
+export default connect(mapStateToProps)(PostHeader)

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../../App.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { LOGINOUT } from '../../Reducer/redux';
 // import FamilyMembers from './Members/FamilyMember';
 
 export class Family extends Component {
@@ -128,4 +127,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { LOGINOUT })(Family)
+export default connect(mapStateToProps)(Family)

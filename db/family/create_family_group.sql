@@ -1,0 +1,1 @@
+INSERT INTO Family_Group (family_name, family_img, group_id)

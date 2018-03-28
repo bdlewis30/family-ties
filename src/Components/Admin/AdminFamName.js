@@ -25,8 +25,8 @@ export class AdminImg extends Component {
         return (
             <div className="family-name-container family-name-input">
                 <h2 className="family-name">{this.state.familyName}</h2>
-                <input type="text" onChange={(e) => this.familyName(e.target.value)} placeholder="Family Name" /><br />
-                <button className="family-name-button" onClick={() => familyName(this.state.familyName)}>Enter</button>
+                <input type="text" onChange={(e) => this.familyName(e.target.value)} placeholder="Enter Family Name" /><br />
+                {/* <button className="family-name-button" onClick={() => familyName(this.state.familyName)}>Enter</button> */}
             </div>
         )
     }

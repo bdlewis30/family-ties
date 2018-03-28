@@ -8,6 +8,7 @@ export default class NotFamily extends Component{
             <div className="loginFail">
                 <h1 className="">Sorry, we were unable to verify that you are family.</h1>
                 <p className="">You can try loggin in again or contact the administrator for assistence.</p>
+                <img src="https://http.cat/401" alt="401 status code"/>
             </div>
         )
     }

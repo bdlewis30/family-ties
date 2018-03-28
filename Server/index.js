@@ -39,15 +39,14 @@ passport.use(new Auth0Strategy({
     scope: 'openid profile'
 }, function (accessToken, refreshToken, extraParams, profile, done) {
     console.log(profile);
-    let { name, email, picture, user_id } = profile;
+    let { displayName, picture, auth_id } = profile;
     const db = app.get('db');
-    db.find_user([user_id]).then(function (user) {
+    db.users.find_user([auth_id]).then(function (user) {
         if (!user[0]) {
-            db.create_user([
-                name,
-                email,
+            db.users.create_user([
+                displayName,
                 picture,
-                user_id
+                auth_id
             ]).then(user => {
                 return done(null, user[0].id)
             })
@@ -58,22 +57,23 @@ passport.use(new Auth0Strategy({
     })
 }))
 
-passport.serializeUser((id, done) => {
-    return done(null, id)
-})
-
-passport.deserializeUser((id, done) => {
-    app.get('db').find_session_user([id])
-        .then(function (user) {
-            return done(null, user[0])
-        })
-})
 
 app.get('/auth', passport.authenticate('auth0'))
 app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: process.env.SUCCESSREDIRECT,
     failureRedirect: process.env.FAILUREREDIRECT
 }))
+
+passport.serializeUser((id, done) => {
+    return done(null, id)
+})
+
+passport.deserializeUser((id, done) => {
+    app.get('db').users.find_session_user([id])
+        .then(function (user) {
+            return done(null, user[0])
+        })
+})
 
 app.get('/auth/me', (req, res) => {
     if (!req.user) {
@@ -89,7 +89,7 @@ app.get('auth/logout', function (req, res) {
     res.redirect('/')
 })
 
-let router = require('./Routes/apis')
+let router = require('./apis')
 app.use('/api', router)
 
 app.listen(SERVER_PORT, () => {

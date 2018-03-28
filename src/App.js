@@ -9,11 +9,13 @@ import Family from './Components/Pages/Family';
 import Posts from './Components/Pages/Posts';
 import NotFamily from './Components/Pages/NotFamily';
 import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
         <Switch>
           <Route path="/" component={Login} exact />
           <Route path="/Admin" component={CreateFamily} />

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Header.css';
+import './Admin.css';
 import axios from 'axios';
 
-export class Header extends Component {
+export class AdminHeader extends Component {
 
     constructor(props){
         super(props)
@@ -26,8 +26,8 @@ componentDidMount(){
 
     render() {
         return (
-            <div>
-                <header>
+            <div className="admin-header">
+                <header className="profile-img">
                     {this.state.userName}
                     {this.state.userImg}
                 </header>
@@ -42,4 +42,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps)(AdminHeader)

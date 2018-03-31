@@ -33,9 +33,12 @@
     border: none
 }
 
-.glyphicon-camera, .glyphicon-comment, .glyphicon-facetime-video{
-    font-size: 20px;
+.photoVideoComment button:hover {
     color: cornflowerblue;
+}
+
+.glyphicon-camera, .glyphicon-comment, .glyphicon-facetime-video, {
+    font-size: 20px;
 }
 
 .comment {
@@ -59,7 +62,7 @@
 .comment textarea {
     width: 75%;
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid gray;
     margin-left: 10px;
     word-wrap: break-word;
 }
@@ -119,7 +122,39 @@
 
 .posted {
     padding: 0px 10px;
-    margin-bottom: 20px;
+}
+
+.like-comment {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: -5px 0px 15px 0px;
+    padding-left: 10px;
+}
+
+.like-comment button {
+    background-color: white;
+    border: none;
+}
+
+.like-comment button:hover {
+    color: cornflowerblue;
+}
+
+.glyphicon-thumbs-up {
+    font-size: 20px;
+}
+
+.likes {
+    font-size: 12px;
+    font-weight: 700;
+    color: gray;
+}
+
+.margin-left {
+    margin-left: 10px;
 }
 
 @media(min-width:768px){

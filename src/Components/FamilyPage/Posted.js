@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Pages.css';
 import FamilyImage from '../../assets/family.jpg';
 import { connect } from 'react-redux'
 import { GETUSER } from '../../Reducer/redux';
@@ -14,7 +13,8 @@ export class Posted extends Component {
             profile: {},
             name: 'Ben Lewis',
             timestamp: '20 min',
-            posts: 'It is so great that we can post anything we want through this app! I really like this app because it is easy to use. This is a link http://www.google.com'
+            posts: 'It is so great that we can post anything we want through this app! I really like this app because it is easy to use. This is a link http://www.google.com',
+            likes: 12
         }
     }
 
@@ -28,9 +28,9 @@ export class Posted extends Component {
     }
 
     link = (post) => {
-        if(post.search(/'http','https'/g)){
-            let httpHttps = post.splice(post.indexOf(/'http','https'/g),1)
-            return  `<a href=${httpHttps} target="_blank/>`
+        if (post.search(/'http','https'/g)) {
+            let httpHttps = post.splice(post.indexOf(/'http','https'/g), 1)
+            return `<a href=${httpHttps} target="_blank/>`
         }
     }
 
@@ -44,8 +44,13 @@ export class Posted extends Component {
                         <div className="time-stamp">{this.state.timestamp}</div>
                     </section>
                 </section>
-                <div className="posted">{this.state.posts}</div>
-                <hr />
+                <section className="posted">{this.state.posts}
+                    <hr />
+                </section>
+                <section className="like-comment">
+                    <button><span className="glyphicon glyphicon-thumbs-up"></span> Like <span className="likes">{this.state.likes}</span></button>
+                    <button className="margin-left"><span className="glyphicon glyphicon-comment"></span> Comment</button>
+                </section>
             </div>
         )
     }

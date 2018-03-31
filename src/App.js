@@ -4,9 +4,8 @@ import './reset.css';
 import './App.css';
 import Login from './Components/Pages/Login';
 import CreateFamily from './Components/Admin/CreateFamily';
-import FamilyMember from './Components/Pages/Members/FamilyMember';
 import Family from './Components/Pages/Family';
-import Posts from './Components/Pages/Posts';
+import FamilyPage from './Components/FamilyPage/FamilyPage';
 import NotFamily from './Components/Pages/NotFamily';
 import Footer from './Components/Footer/Footer';
 
@@ -17,9 +16,8 @@ class App extends Component {
         <Switch>
           <Route path="/" component={Login} exact />
           <Route path="/Admin" component={CreateFamily} />
-          <Route path="/create-family" component={FamilyMember} />
           <Route path="/Family" component={Family} />
-          <Route path="/Posts" component={Posts} />
+          <Route path="/Posts" component={FamilyPage} />
           <Route path="/NotFamily" component={NotFamily} />
         </Switch>
         <section className="margin"></section>

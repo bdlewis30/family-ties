@@ -41,17 +41,18 @@
     font-size: 20px;
 }
 
-.comment {
+.post {
     width: 100%;
-    height: 15vh;
+    height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
     box-shadow: lightgray 0px 2px 4px 2px;
-    padding-bottom: 10px;
+    padding: 10px 0px;
 }
 
-.comment .profileImg {
+.post .profileImg {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -59,12 +60,25 @@
     margin-left: 10px;
 }
 
-.comment textarea {
+.post textarea {
     width: 75%;
     border: none;
     border-bottom: 1px solid gray;
     margin-left: 10px;
     word-wrap: break-word;
+}
+
+.post-button-container {
+    margin-left: 70%;
+}
+
+.post-button {
+    width: 75px;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
 }
 
 ::placeholder{

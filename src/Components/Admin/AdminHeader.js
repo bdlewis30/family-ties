@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {getUserInfo} from '../../Reducer/redux';
 import './Admin.css';
 import axios from 'axios';
 
@@ -9,27 +10,21 @@ export class AdminHeader extends Component {
         super(props)
 
         this.state = {
-            userName: '',
-            userImg: ''
-
+            user: {}
         }
     }
 
-componentDidMount(){
-    axios.get(`/api/getUser/${this.props.data}`).then(response => {
-        this.setState({
-            userName: this.props.user_name,
-            userImg: this.props.user_img
-        })
-    })
+componentDidMount(user_id){
+    this.props.getUserInfo()
 }
 
     render() {
+        const user = this.props.user
         return (
             <div className="admin-header">
-                <header className="profile-img">
-                    {this.state.userName}
-                    {this.state.userImg}
+                <header>
+                    <img className="profile-img" src={user.user_img} alt="user" />
+                    <div>{user.user_name}</div>
                 </header>
             </div>
         )
@@ -42,4 +37,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(AdminHeader)
+export default connect(mapStateToProps, {getUserInfo})(AdminHeader)

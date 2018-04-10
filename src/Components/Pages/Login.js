@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import '../../App.css';
 import FamilyPhoto from '../../assets/placeholder-family.jpg';
 import Video from '../../assets/171003B_026_2k.mp4';
-import { connect } from 'react-redux';
 
-export class Login extends Component {
+
+export default class Login extends Component {
 
 
     render() {
@@ -30,11 +30,3 @@ export class Login extends Component {
         )
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        user: state.user
-    }
-}
-
-export default connect(mapStateToProps)(Login)

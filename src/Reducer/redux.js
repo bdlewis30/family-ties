@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const initialState = {
-    users: {},
+    user: {},
     admin: {
         mainFamImg: '',
         familyName: '',
@@ -26,16 +26,18 @@ const initialState = {
     }
 }
 
-const LOG_IN_OUT = 'LOG_IN_OUT';
-const GET_USER = 'GET_USER';
+const GET_USER_INFO = 'GET_USER';
 const FAMILY_NAME = 'FAMILY_NAME';
 const ADD_FAMILY_MEMBERS = 'ADD_FAMILY_MEMBERS'
+const LOG_IN_OUT = 'LOG_IN_OUT';
 
-export function GETUSER() {
-
+export function getUserInfo() {
+    let userData = axios.get('/auth/me').then(res => {
+        return res.data;
+    })
     return {
-        type: GET_USER,
-        payload: axios.get('/auth/me').then()
+        type: GET_USER_INFO,
+        payload: userData
     }
 }
 
@@ -62,14 +64,14 @@ export function addFamilyMembers(names){
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case GET_USER + '_FULFILLED':
-            return Object.assign({}, state, { user: action.payload.data })
-        case LOG_IN_OUT:
-            return Object.assign({}, state, { loggedin: action.payload })
+        case GET_USER_INFO + '_FULFILLED':
+            return Object.assign({}, state, { user: action.payload })
         case FAMILY_NAME:
             return Object.assign({}, state, {familyName: action.payload})
         case ADD_FAMILY_MEMBERS:
             return Object.assign({}, state, {famMembers: action.payload})
+        case LOG_IN_OUT:
+            return Object.assign({}, state, { loggedin: action.payload })
         default:
         return state
     }

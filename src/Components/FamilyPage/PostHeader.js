@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {GETUSER} from '../../Reducer/redux';
+import {getUserinfo} from '../../Reducer/redux';
 
 export class PostHeader extends Component {
 
@@ -16,7 +16,7 @@ export class PostHeader extends Component {
     }
 
     componentDidMount() {
-        this.props.GETUSER().then(() => {
+        this.props.getUserInfo().then(() => {
             axios.get(`/api/getUser/${this.props.user.id}`)
                 .then(response => {
                     this.setState({ profile: response.data })
@@ -39,4 +39,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(PostHeader)
+export default connect(mapStateToProps, {getUserInfo})(PostHeader)

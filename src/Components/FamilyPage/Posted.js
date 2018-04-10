@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FamilyImage from '../../assets/family.jpg';
 import { connect } from 'react-redux'
-import { GETUSER } from '../../Reducer/redux';
+import { getUserInfo } from '../../Reducer/redux';
 import axios from 'axios';
 
 export class Posted extends Component {
@@ -19,7 +19,7 @@ export class Posted extends Component {
     }
 
     componentDidMount() {
-        this.props.GETUSER().then(() => {
+        this.props.getUserInfo().then(() => {
             axios.get(`/api/getUser/${this.props.user.id}`)
                 .then(response => {
                     this.setState({ profile: response.data })
@@ -61,4 +61,4 @@ function mapStateToProps(state) {
         user: state.user
     }
 }
-export default connect(mapStateToProps, { GETUSER })(Posted);
+export default connect(mapStateToProps, { getUserInfo })(Posted);

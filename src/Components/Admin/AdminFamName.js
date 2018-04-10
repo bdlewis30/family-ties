@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { GETUSER, familyName } from '../../Reducer/redux';
+import { getUserInfo, familyName } from '../../Reducer/redux';
 import FamilyImage from '../../assets/family.jpg';
 
 
@@ -35,9 +35,9 @@ export class AdminImg extends Component {
 
 function mapStateToProps(state) {
     return {
-        users: {},
+        user: {},
         familyName: state.familyName
     }
 }
 
-export default connect(mapStateToProps, { GETUSER, familyName })(AdminImg);
+export default connect(mapStateToProps, { getUserInfo, familyName })(AdminImg);

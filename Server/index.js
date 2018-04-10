@@ -39,14 +39,14 @@ passport.use(new Auth0Strategy({
     scope: 'openid profile'
 }, function (accessToken, refreshToken, extraParams, profile, done) {
     console.log(profile);
-    let { displayName, picture, auth_id } = profile;
+    let { displayName, picture, user_id } = profile;
     const db = app.get('db');
-    db.users.find_user([auth_id]).then(function (user) {
+    db.users.find_user([user_id]).then(function (user) {
         if (!user[0]) {
             db.users.create_user([
                 displayName,
                 picture,
-                auth_id
+                user_id
             ]).then(user => {
                 return done(null, user[0].id)
             })
@@ -55,13 +55,6 @@ passport.use(new Auth0Strategy({
             return done(null, user[0].id)
         }
     })
-}))
-
-
-app.get('/auth', passport.authenticate('auth0'))
-app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: process.env.SUCCESSREDIRECT,
-    failureRedirect: process.env.FAILUREREDIRECT
 }))
 
 passport.serializeUser((id, done) => {
@@ -74,6 +67,12 @@ passport.deserializeUser((id, done) => {
             return done(null, user[0])
         })
 })
+
+app.get('/auth', passport.authenticate('auth0'))
+app.get('/auth/callback', passport.authenticate('auth0', {
+    successRedirect: process.env.SUCCESSREDIRECT,
+    failureRedirect: process.env.FAILUREREDIRECT
+}))
 
 app.get('/auth/me', (req, res) => {
     if (!req.user) {

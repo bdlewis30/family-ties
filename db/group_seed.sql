@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS Group (
+    id SERIAL PRIMARY KEY,
+    family_name VARCHAR(50)
+);

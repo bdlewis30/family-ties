@@ -11,21 +11,24 @@
     "express-session": "^1.15.6",
     "massive": "^4.7.1",
     "passport": "^0.4.0",
-    "react": "^16.2.0",
+    "react": "^16.3.1",
     "react-dom": "^16.2.0",
+    "react-dropzone": "^4.2.9",
     "react-redux": "^5.0.7",
     "react-responsive-modal": "^2.0.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
     "redux-promise-middleware": "^5.0.0",
-    "session": "^0.1.0"
+    "session": "^0.1.0",
+    "superagent": "^3.8.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "debug": "nodemon --inspect server/index.js"
   },
   "main": "server/index.js",
   "proxy": "http://localhost:4040"

@@ -65,19 +65,18 @@
 }
 
 .family-name-button, input[type="submit"] {
-    width: 100%;
+    width: 40%;
     background-color: cornflowerblue;
     border-radius: 10px;
-    font-size: 24px;
+    font-size: 16px;
     color: white;
-    padding: 20px 0px;
+    padding: 12px 0px;
     margin: 0px 0px 30px 0px;
     box-shadow: lightgray 0px 1px 1px 0.5px;
 }
 
 .family-name-button:active, input[type="submit"]:active {
-    width: 98%;
-    padding: 18px 0px;
+    background-color: rgb(71, 130, 238);
 }
 
 input[type="file"] {

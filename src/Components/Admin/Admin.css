@@ -79,29 +79,20 @@
     background-color: rgb(71, 130, 238);
 }
 
-input[type="file"] {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0px;
-    padding: 20px;
-    border: 1px solid lightgray;
-    background-color: white;
-}
-
-.family-img-upload {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-}
-
 .family-img {
     max-width: 100%;
     max-height: 40vh;
     object-fit: scale-down;
     overflow: hidden;
+}
+.dropzone {
+    width: 70%;
+    height: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: dashed lightgray;
+    padding: 20px;
+    margin-bottom: 20px;
 }

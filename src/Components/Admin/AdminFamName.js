@@ -1,31 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUserInfo, familyName } from '../../Reducer/redux';
-import FamilyImage from '../../assets/family.jpg';
+import { addFamilyName } from '../../Reducer/redux';
+import axios from 'axios';
 
 
-export class AdminImg extends Component {
+export class AdminFamilyName extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             familyName: 'Family Name',
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    familyName = (value) => {
+    handleChange(event){
         this.setState({
-            familyName: value
+            familyName: event.target.value
         })
     }
 
+    handleClick(){
+        this.props.addFamilyName(this.state.familyName)
+    }
 
     render() {
-        let { familyName } = this.props
         return (
             <div className="family-name-container family-name-input">
                 <h2 className="family-name">{this.state.familyName}</h2>
-                <input type="text" onChange={(e) => this.familyName(e.target.value)} placeholder="Enter Family Name" /><br />
+                <input type="text" onChange={this.handleChange} placeholder="Enter Family Name" /><br />
+                <button onClick={this.handleClick}>Add Name</button>
             </div>
         )
     }
@@ -34,9 +39,8 @@ export class AdminImg extends Component {
 
 function mapStateToProps(state) {
     return {
-        user: {},
-        familyName: state.familyName
+        familyName: state.admin.familyName
     }
 }
 
-export default connect(mapStateToProps, { getUserInfo, familyName })(AdminImg);
+export default connect(mapStateToProps, {addFamilyName})(AdminFamilyName);

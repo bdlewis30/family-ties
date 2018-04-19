@@ -3,12 +3,13 @@ const router = express.Router();
 const group_controller = require('./group_controller');
 
 // Group
+// app.get('/api/group', function(req, res, next){**code to send back data})
 
 router.get('/group', group_controller.getAllGroups);
 
 // router.get('/group/:group_id', group_controller.getOneGroup);
 
-// router.post('/group', group_controller.addGroup);
+router.post('/group', group_controller.createGroup);
 
 // router.put('/group/:group_id', group_controller.updateGroup);
 

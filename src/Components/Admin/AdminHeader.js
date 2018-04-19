@@ -10,7 +10,7 @@ export class AdminHeader extends Component {
         super(props)
 
         this.state = {
-            user: {}
+            user: this.props.user
         }
     }
 
@@ -19,12 +19,12 @@ componentDidMount(user_id){
 }
 
     render() {
-        const user = this.props.user
+        // const member = this.props.user
         return (
             <div className="admin-header">
                 <header>
-                    <img className="profile-img" src={user.user_img} alt="user" />
-                    <div>{user.user_name}</div>
+                    <img className="profile-img" src={this.props.user.user_img} alt="user" />
+                    <div>{this.props.user.user_name}</div>
                 </header>
             </div>
         )

@@ -12,6 +12,15 @@ const group_controller = {
         }).catch(error => {
             console.log(error)
         })
+    },
+    createGroup: (req, res) => {
+        const db = req.app.get('db')
+
+        const {family_name, family_image} = req.body
+
+        db.group.create_group([family_name, family_image, group_id]).then(result => {
+            res.send(result)
+        })
     }
     // getOneGroup: (req, res) => {
     //     const db = req.app.get('db')

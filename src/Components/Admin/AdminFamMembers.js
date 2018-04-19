@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUserInfo, addFamilyMembers } from '../../Reducer/redux';
+import { getUserInfo } from '../../Reducer/redux';
 import FamilyImage from '../../assets/family.jpg';
 
 
@@ -9,24 +9,14 @@ export class AdminFamMembers extends Component {
         super(props)
 
         this.state = {
-            famMembers: []
+            // famMembers: []
         }
     }
 
-    familyName = (value) => {
-        this.setState({
-            familyName: value
-        })
-    }
-
-
     render() {
-
-        let { famMembers } = this.props
-
         return (
             <div className="">
-                <h2>Family Members</h2>
+                {/* <h2>Family Members</h2> */}
             </div>
         )
     }
@@ -36,8 +26,7 @@ export class AdminFamMembers extends Component {
 function mapStateToProps(state) {
     return {
         user: {},
-        familyMembers: state.familyMembers
     }
 }
 
-export default connect(mapStateToProps, { getUserInfo, addFamilyMembers })(AdminFamMembers);
+export default connect(mapStateToProps, { getUserInfo })(AdminFamMembers);

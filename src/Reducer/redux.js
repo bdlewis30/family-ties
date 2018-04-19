@@ -3,32 +3,15 @@ import axios from "axios";
 const initialState = {
     user: {},
     admin: {
-        mainFamImg: '',
-        familyName: '',
-        parents: [],
-        famMembers: [],
-        access: [],
-        messageTwo: ''
-    },
-    familyMembers: {
-        familyImg: '',
-        familyName: '',
-        posts: {
-            postUserImg: '',
-            postUserName: '',
-            post: '',
-            dateTime: '',
-            image: '',
-            video: '',
-            likes: '',
-            comments: ''
-        }
+        uploadedImgCloudinaryUrl: '',
+        familyName: ''
     }
 }
+console.log('Users from redux:', initialState.user)
 
 const GET_USER_INFO = 'GET_USER';
 const FAMILY_NAME = 'FAMILY_NAME';
-const ADD_FAMILY_MEMBERS = 'ADD_FAMILY_MEMBERS'
+const FAMILY_IMAGE = 'FAMILY_IMAGE';
 const LOG_IN_OUT = 'LOG_IN_OUT';
 
 export function getUserInfo() {
@@ -48,17 +31,17 @@ export function LOGINOUT(boo) {
     }
 }
 
-export function familyName(name){
+export function addFamilyName(name){
     return {
         type: FAMILY_NAME,
         payload: name
     }
 }
 
-export function addFamilyMembers(names){
+export function familyImage(image){
     return {
-        type: ADD_FAMILY_MEMBERS,
-        payload: names
+        type: FAMILY_IMAGE,
+        payload: image
     }
 }
 
@@ -67,9 +50,9 @@ export default function reducer(state = initialState, action) {
         case GET_USER_INFO + '_FULFILLED':
             return Object.assign({}, state, { user: action.payload })
         case FAMILY_NAME:
-            return Object.assign({}, state, {familyName: action.payload})
-        case ADD_FAMILY_MEMBERS:
-            return Object.assign({}, state, {famMembers: action.payload})
+            return {admin: {familyName: action.payload}}
+        case FAMILY_IMAGE:
+            return Object.assign({}, state,{uploadedImgCloudinaryUrl: action.payload})
         case LOG_IN_OUT:
             return Object.assign({}, state, { loggedin: action.payload })
         default:

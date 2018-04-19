@@ -4,7 +4,7 @@ import { getUserInfo } from '../../Reducer/redux';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 
-export default class AdminImg extends Component {
+class AdminImg extends Component {
     constructor(props) {
         super(props)
 
@@ -73,10 +73,11 @@ export default class AdminImg extends Component {
 
 }
 
-// function mapStateToProps(state) {
-//     return {
-//         user: {}
-//     }
-// }
+function mapStateToProps(state) {
+    return {
+        user: {},
+        uploadedImgCloudinaryUrl: ''
+    }
+}
 
-// export default connect(mapStateToProps, { getUserInfo })(AdminImg);
+export default connect(mapStateToProps, { getUserInfo })(AdminImg);

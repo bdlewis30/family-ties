@@ -1,0 +1,2 @@
+DELETE FROM Groups
+WHERE id = $1
